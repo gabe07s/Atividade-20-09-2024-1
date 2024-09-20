@@ -1,0 +1,55 @@
+import os
+os.system("cls || clear")
+
+numeros = []
+
+def ler_numeros():
+    for i in range(5):
+        numero = int(input(f"Digite o {i + 1}º número: "))
+        numeros.append(numero)
+
+def processar_numeros(numeros):
+    quantidade_pares = 0
+    quantidade_impares = 0
+    soma_pares = 0
+    soma_impares = 0
+
+    for numero in numeros:
+        if numero % 2 == 0:
+            quantidade_pares += 1
+            soma_pares += numero
+        else:
+            quantidade_impares += 1
+            soma_impares += numero
+
+    media_pares = soma_pares / quantidade_pares if quantidade_pares > 0 else 0
+    media_impares = soma_impares / quantidade_impares if quantidade_impares > 0 else 0
+
+    return quantidade_pares, quantidade_impares, media_pares, media_impares
+
+def positivo_negativo(numeros):
+    quantidade_positivos = 0
+    quantidade_negativos = 0
+
+    for numero in numeros:
+        if numero > 0:
+            quantidade_positivos += 1
+        elif numero < 0:
+            quantidade_negativos += 1
+
+    return quantidade_positivos, quantidade_negativos
+
+# Executando as funções
+ler_numeros()
+quantidade_pares, quantidade_impares, media_pares, media_impares = processar_numeros(numeros)
+quantidade_positivos, quantidade_negativos = positivo_negativo(numeros)
+
+# Exibindo resultados
+print("=== Exibindo Resultados ===")
+print(f"Números: {numeros}")
+print(f"Pares: {quantidade_pares}, Média dos Pares: {media_pares}")
+print(f"Ímpares: {quantidade_impares}, Média dos Ímpares: {media_impares}")
+print(f"Positivos: {quantidade_positivos}, Negativos: {quantidade_negativos}")
+print("Números em ordem reversa: ")
+for numero in reversed(numeros):
+    print(numero)
